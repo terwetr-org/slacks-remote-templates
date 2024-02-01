@@ -46,7 +46,9 @@ jobs:
       - name: Open Pull Request
         uses: actions/github-script@v6
         env:
-          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+          BRANCH: ${{ env.BRANCH }}-${{ github.run_id }}
+          COMMIT_MESSAGE: ${{ env.COMMIT_MESSAGE }}
         with:
           script: |
             return await github.request('POST /repos/terwetr-org/slacks-remote-templates/pulls', {
