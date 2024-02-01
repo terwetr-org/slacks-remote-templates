@@ -38,7 +38,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git checkout -b ${{ env.BRANCH }}-${{ github.run_id }}
-          echo remote-templates-stg.yaml > remote-templates-prod.yaml
+          cp remote-templates-stg.yaml remote-templates-prod.yaml
           git add .
           git commit -m "${{ env.COMMIT_MESSAGE }}"
           git push origin ${{ env.BRANCH }}-${{ github.run_id }}
@@ -46,10 +46,10 @@ jobs:
       - name: Open Pull Request
         uses: actions/github-script@v6
         env:
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
           BRANCH: ${{ env.BRANCH }}-${{ github.run_id }}
           COMMIT_MESSAGE: ${{ env.COMMIT_MESSAGE }}
         with:
+          github-token: ${{ steps.generate-token.outputs.token }}
           script: |
             return await github.request('POST /repos/terwetr-org/slacks-remote-templates/pulls', {
               owner: 'terwetr-org'
