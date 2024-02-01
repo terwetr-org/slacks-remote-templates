@@ -51,15 +51,12 @@ jobs:
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
           script: |
-            const targetTitle = process.env.COMMIT_MESSAGE
-            const targetHead = process.env.BRANCH
-            
             await github.request('POST /repos/terwetr-org/slacks-remote-templates/pulls', {
-              owner: 'terwetr-org'
+              owner: 'terwetr-org',
               repo: 'slacks-remote-templates',
-              title: targetTitle,
+              title: process.env.COMMIT_MESSAGE,
               body: 'PR via GHA',
-              head: targetHead,
+              head: process.env.BRANCH,
               base: 'main',
               headers: {
                 'X-GitHub-Api-Version': '2022-11-28'
