@@ -5,4 +5,4 @@ metadata:
 spec:
   type: url
   targets:
-    - https://github.com/terwetr-org/slacks-template-java/blob/main/template.yaml
+    - https://github.com/terwetr-org/slacks-template-java/blob/v1/template.yaml
