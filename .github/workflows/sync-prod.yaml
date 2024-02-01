@@ -50,8 +50,8 @@ jobs:
         with:
           script: |
             return await github.request('POST /repos/terwetr-org/slacks-remote-templates/pulls', {
-              owner: terwetr-org
-              repo: slacks-remote-templates,
+              owner: 'terwetr-org'
+              repo: 'slacks-remote-templates',
               title: process.env.COMMIT_MESSAGE,
               body: 'PR via GHA',
               head: process.env.BRANCH,
