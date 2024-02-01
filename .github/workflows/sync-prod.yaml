@@ -11,8 +11,7 @@ on:
      
   workflow_dispatch:
 
-permissions:
-  actions: write-all
+permissions: write-all
 
 env:
   BRANCH: feature/sync-prod
