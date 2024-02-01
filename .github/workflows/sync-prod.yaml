@@ -8,6 +8,9 @@ on:
    paths:
      - 'remote-templates-stg.yaml'
 
+permissions:
+  actions: write-all
+
 env:
   BRANCH: feature/sync-prod
   COMMIT_MESSAGE: 'feat: sync prod via GHA'
